@@ -6,7 +6,7 @@ import "reflect-metadata";
  * @param type DTO 클래스
  * @param containRequiredFalse required = false 필드 적용 여부
  * */
-export default function createSwaggerDefaultDto<T>(type: { new (): T }, containRequiredFalse = true) {
+export function createSwaggerDefaultDto<T>(type: { new (): T }, containRequiredFalse = true) {
     const instance = new type();
 
     const propertyNames = Object.getOwnPropertyNames(instance) as Array<keyof T>;
