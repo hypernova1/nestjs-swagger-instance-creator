@@ -58,8 +58,8 @@ describe('test', () => {
         updateSwaggerDto(instance, {
             name: 'morgoth',
         });
-        const updatedTitle = instance.name;
+        const updatedName = instance.name;
 
-        expect(preName).not.toEqual(updatedTitle);
+        expect(preName).not.toEqual(updatedName);
     });
 });

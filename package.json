@@ -1,7 +1,7 @@
 {
   "name": "nestjs-swagger-instance-creator",
   "version": "1.0.0",
-  "description": "",
+  "description": "This is a library that reads information from Swagger decorators and creates instances.",
   "main": "dist/cjs/index.js",
   "repository": "git@github.com:hypernova1/swagger-default-instance-creator.git",
   "type": "module",
