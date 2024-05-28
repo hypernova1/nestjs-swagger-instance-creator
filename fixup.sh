@@ -1,6 +1,6 @@
-cp dist/mjs/src/index.d.ts dist
+cp dist/mjs/index.d.ts dist
 
-rm -rf dist/*/src/index.d.ts
+rm -rf dist/*/index.d.ts
 
 cat >dist/cjs/package.json <<!EOF
 {
