@@ -1,5 +1,5 @@
 import { createSwaggerDefaultDto, updateSwaggerDto } from '../src';
-import { ApiProperty } from '@nestjs/swagger';
+import {ApiProperty} from "@nestjs/swagger";
 
 class Post {
     @ApiProperty({
@@ -29,6 +29,7 @@ class User {
     @ApiProperty({
         description: 'post list',
         type: Post,
+        isArray: true,
         default: Post,
         required: false,
     })
@@ -50,6 +51,7 @@ describe('test', () => {
     it('create instance and get array property', () => {
         const instance = createSwaggerDefaultDto(User);
         expect(instance.posts).toBeDefined();
+        expect(Array.isArray(instance.posts)).toBeTruthy();
     });
 
     it('create instance and update instance', () => {

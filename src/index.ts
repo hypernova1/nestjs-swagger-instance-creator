@@ -1,4 +1,5 @@
 import "reflect-metadata";
+import {isArray} from "@nestjs/swagger/dist/plugin/utils/ast-utils";
 
 /**
  * 스웨거 적용된 DTO의 인스턴스를 만든 후 default 값을 적용한다.
@@ -21,12 +22,13 @@ export function createSwaggerDefaultDto<T>(type: { new (): T }, containRequiredF
         const fieldType = Reflect.getMetadata('design:type', type.prototype, propertyName as string);
         const defaultValue = decoratorValues['default'];
         const isRequired = decoratorValues['required'];
+        const isArray = decoratorValues['isArray'];
         if (!containRequiredFalse && !isRequired) {
             continue;
         }
 
         if (typeof defaultValue === 'function') {
-            if (fieldType === Array && !Array.isArray(defaultValue)) {
+            if (isArray || (fieldType === Array && !Array.isArray(defaultValue))) {
                 (instance[propertyName] as any[]) = [createSwaggerDefaultDto(defaultValue, containRequiredFalse)];
                 continue;
             }
